@@ -1,0 +1,44 @@
+
+.Info {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 7rem; /* Adjust the margin as needed */
+  }
+  
+  .section1 {
+    
+    height: 30vh;
+    width: 85%; /* Adjust the width as needed */
+    background-color: brown;
+    margin: 1rem 1rem 1rem 1rem; /* Apply margin to all sides */ 
+    border-radius: 1rem;
+    text-align: center;
+  }
+
+  .section1 h1{
+    text-align: center;
+    padding:1rem 0;
+    font-size: 2rem;
+  }
+
+
+  .section1 p{
+    text-align: center;
+  }
+
+
+  @media (max-width: 768px) {
+    .section1{
+        width: 100%;
+        height: auto;
+        margin: 1rem 0; 
+    }
+    
+  }
+
+  .section1:hover{
+    transform: scale(1.1);
+  }

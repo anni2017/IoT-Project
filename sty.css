@@ -1,0 +1,509 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f0f0f0; Light background for the entire page */
+}
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* to stop horizontal scrolling */
+  }
+
+.navbar {
+    height: 7rem;
+    width: 100vw;
+    background-color: #fff;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex; /* Make the navbar a flex container */
+    justify-content: space-between; /* Space elements evenly */
+    align-items: center; /* Align elements vertically */
+}
+
+.logo img {
+    height: 5rem;
+    width: 5rem;
+    margin-left: 1rem;
+}
+
+/* .elements {
+    display: flex;
+    align-items: center;
+}
+
+.elements a {
+    height: 1.6rem;
+    width: 4.5rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: lighter;
+    background-color: #fff;
+    margin: 0 1rem; /* Add spacing between elements */
+
+
+.hero {
+    text-align: center;
+    width: 100vw;
+    padding: 100px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color:white;
+    animation: scaleInOut 3s infinite alternate;
+}
+
+.committee-formation {
+    background-color: #fff;
+    padding: 40px;
+    margin: 2.5rem 10rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.committee-formation h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color:midnightblue
+}
+
+.committee-formation p {
+    line-height: 1.5;
+    text-align: center;
+    padding-top: 0.6rem;
+}
+
+/* .elements a:hover{
+    font-size: x-large;
+    color:brown
+} */
+
+/* .menu i{
+    height:2.5rem;
+    width:2.5rem;
+    margin-right:1rem;
+    /* background-color:cadetblue; */
+    /* color:black;
+    display: none; */
+
+
+    .vision-mission{
+      display: flex;
+      margin:1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .vision{
+      background-color:#5b5a5a;
+      height:60vh;
+      width:27vw;
+      margin:1rem;
+      border-radius: 1rem;
+      box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .vision:hover{
+      transform: scale(1.1);
+    }
+
+    .innerV , .innerM{
+      background-color:#424141;
+      height:5rem;
+      width:25vw; 
+      margin:1rem 1rem;
+      border-radius: 1rem;
+      box-shadow: 8px 8px 10px #a8a4a4;
+    }
+
+    .innerV h1{
+      text-align: center;
+      padding-top:1.5rem;
+      color:#fff;
+      font-size: 2rem;
+      font-weight: lighter;
+    }
+
+    .mission{
+      background-color:#5b5a5a;
+      height:60vh;
+      width:27vw;
+      margin:1rem;
+      border-radius: 1rem;
+      box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.2);
+      
+    }
+    .innerM h1{
+      text-align: center;
+      padding-top:1.5rem;
+      color:#fff;
+      font-size: 2rem;
+      font-weight: lighter;
+    }
+
+    .mission:hover{
+      transform: scale(1.1);
+    }
+
+
+    @media (max-width: 768px) {
+      .vision, .mission {
+        width: 100%;
+      }
+    
+      .innerV, .innerM {
+        width: 100%;
+        margin: 1rem 0; /* Remove right margin and add top/bottom margin */
+      }
+    }
+
+    .innerV p{
+      text-align: center;
+      margin:6rem 2rem;
+      color:white;
+      line-height: 1.5;
+    }
+
+    .innerM p{
+      text-align: center;
+      margin:6rem 2rem;
+      color:white;
+      line-height: 1.5;
+    }
+
+.navbar1 {
+    /* background-color: #f2f2f2; */
+    padding: 10px;
+  }
+  
+  .nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* display: none; */
+  }
+  
+  .nav-links li {
+    margin-right: 40px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .menu-icon {
+    display: none; /* Hide the icon initially */
+    font-size: 24px;
+    margin-right:1rem;
+    cursor: pointer;
+    
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none; /* Hide the nav links on smaller screens */
+    }
+  
+    .menu-icon {
+      display: block; /* Show the menu icon on smaller screens */
+      
+      color:black;
+    }
+
+    .nav-links.show {
+        display: block; /* Show the nav links when the 'show' class is added */
+      }
+
+      .menu-icon.hide {
+        display: none;
+      }
+  }
+
+
+@media (max-width: 768px) {
+    .navbar {
+        /* Adjust navbar styles for smaller screens */
+        height: 6rem;
+        padding: 1rem;
+    }
+
+    .logo img {
+        /* Adjust logo size for smaller screens */
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .elements a {
+        /* Adjust font size and spacing for smaller screens */
+        font-size: 1rem;
+        margin: 1rem 0.5rem;
+    }
+
+    .hero h1 {
+        /* Adjust heading size for smaller screens */
+        font-size: 3rem;
+    }
+
+    .committee-formation {
+        /* Adjust padding and margin for smaller screens */
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .committee-formation h2 {
+        /* Adjust heading size for smaller screens */
+        font-size: 1.8rem;
+    }
+
+    /* Add more specific adjustments as needed */
+
+    /* .elements{
+        display: none;
+    } */
+
+    /* .menu i{
+        display: block;
+    } */
+}
+
+ 
+
+/* .Workshops h1{
+    font-size: 2.5rem;
+    text-align: center;
+    color:black;
+    padding-top: 1rem;
+    
+} */
+
+.clsworkshop h2{
+    font-size: 4rem;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    /* animation: myAnimation 2s infinite; */
+}
+
+
+.btn{
+
+  
+  margin:3rem 50% ;
+  height:4rem;
+  width:13vw;
+  border-radius: 1.5rem;
+  background-color: #7b7a7a;
+  border:2px solid #7b7a7a;
+  
+}
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+  
+  .btn {
+    width: 80%; 
+    margin:10%;
+  }/* Make the button wider on smaller screens */
+}
+
+.btn a{
+  text-decoration: none;
+  color:white;
+  font-size: 1rem;
+}
+
+  
+  @keyframes myAnimation {
+    0% {
+      opacity: 0; /* Initial state: fully transparent */
+      transform: scale(0.9); /* Initial scale: 80% */
+      color:black;
+    }
+    100% {
+      opacity: 1; /* Final state: fully visible */
+      transform: scale(1.5); /* Final scale: 100% */
+      color:rgb(6, 64, 66);
+    }
+  }
+.Workshops
+{
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+    /* align-items: center; */
+    /* height: 100vh; */
+}
+
+
+.ws {
+    display: inline-block;
+    height: 15rem; /* Adjust the height as needed */
+    width: 16%; /* Adjust the width as needed */
+    background-color: #f0f0f0; /* Set the desired background color */
+    justify-content: space-between;
+    margin: 12px;
+    box-shadow: 5px 8px 15px rgb(0, 0, 0);
+    border-radius: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .ws {
+      width: 100%; /* Make each div take up 100% width on smaller screens */
+    }
+
+    
+  }
+
+  .ws img{
+    height: 15rem; /* Adjust the height as needed */
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .clsEvents{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .card{
+    margin:1.5rem;
+    height:17rem;
+    width:17%;
+    border-radius: 10%;
+    background-color:cornflowerblue;
+    box-shadow: 10px 8px 15px grey;
+    animation: scaleInOut 3s infinite alternate;
+  }
+  
+
+  /* .card:hover{
+    transform: scale(1.1);
+  } */
+  
+
+  @keyframes scaleInOut {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
+  #h1{
+    text-align: center;
+    font-size: 4rem;
+    /* animation: scaleInOut 3s infinite alternate; */
+    
+  }
+
+
+  @media(max-width:768px)
+  {
+    .card{
+      width:100%;
+    }
+  }
+
+
+  
+
+  .Footer {
+    height: 35vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .bottom-footer { /* Remove this class, not needed */
+    width: 100%;
+    height: inherit;
+    background-color: black;
+    text-align: center;
+  }
+  
+  .bottom-footer p { /* Remove this class, not needed */
+    margin-top: 8.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .footer-content {
+    margin-bottom: 20px;
+  }
+  
+  .footer-content ul {
+    display: flex;
+    list-style-type: none;
+    text-decoration: none;
+  }
+  
+  .footer-content li {
+    text-align: center;
+    margin-bottom: 5px;
+    margin-left: 1rem;
+  }
+  
+  .footer-content li img {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .copyright 
+  {
+    text-align: end;
+  }
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .Footer {
+      height: auto; /* Adjust height for smaller screens */
+      padding: 20px; /* Add padding for better spacing */
+    }
+  
+    .footer-content {
+      flex-direction: column; /* Stack content vertically on small screens */
+      align-items: center;
+      text-align: center; /* Center text for better readability */
+    }
+  
+    .footer-content p,
+    .footer-content ul {
+      margin-bottom: 10px; /* Adjust spacing between elements */
+    }
+  
+    .footer-content ul {
+      flex-wrap: wrap; /* Wrap social media icons on smaller screens */
+      justify-content: center; /* Center icons horizontally */
+    }
+  
+    .footer-content li {
+      margin-left: 0; /* Remove margin-left on smaller screens */
+    }
+  
+    .copyright {
+      margin-top: 9rem; /* Add margin between content and copyright */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Additional styles for even smaller screens (optional) */
+    .footer-content li img {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  }
