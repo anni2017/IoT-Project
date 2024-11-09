@@ -419,55 +419,16 @@ html, body {
 
   
 
-  .Footer {
-    height: 35vh;
-    width: 100vw;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-  
-  .bottom-footer { /* Remove this class, not needed */
-    width: 100%;
-    height: inherit;
-    background-color: black;
+  .footer {
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
+    padding: 10px;
     text-align: center;
-  }
-  
-  .bottom-footer p { /* Remove this class, not needed */
-    margin-top: 8.5rem;
-    font-size: 0.8rem;
-  }
-  
-  .footer-content {
-    margin-bottom: 20px;
-  }
-  
-  .footer-content ul {
-    display: flex;
-    list-style-type: none;
-    text-decoration: none;
-  }
-  
-  .footer-content li {
+} 
+.footer p{
     text-align: center;
-    margin-bottom: 5px;
-    margin-left: 1rem;
-  }
-  
-  .footer-content li img {
-    height: 3rem;
-    width: 3rem;
-  }
-
-  .copyright 
-  {
-    text-align: end;
-  }
-  
-  
+    margin-top: 2%;
+}
   /* Responsive Styles */
   @media (max-width: 768px) {
     .Footer {
