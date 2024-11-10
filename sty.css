@@ -382,6 +382,11 @@ html, body {
     animation: scaleInOut 3s infinite alternate;
   }
   
+  .card img{
+    height:17rem;
+    width:17rem;
+    border-radius: 10%;
+  }
 
   /* .card:hover{
     transform: scale(1.1);
