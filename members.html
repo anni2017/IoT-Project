@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoT CoE Club Members</title>
+</head>
+<style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+.mentors, .students {
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+
+
+.carousel-card {
+  min-width: 200px;
+  margin: 0 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.carousel-card:hover {
+  transform: translateY(-5px);
+}
+
+.carousel-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.profile-photo {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-card h3,
+.carousel-card p {
+  margin: 0.5rem 0;
+}
+
+/* Students Section */
+.students-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.student-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-card h3,
+.student-card p {
+  margin: 0.5rem 0;
+}
+
+.student-card a {
+  color: #0077b5;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+</style>
+<body>
+  <header>
+    <h1>IoT CoE Club Members</h1>
+  </header>
+
+  <!-- Mentors Carousel Section -->
+  <section class="mentors">
+    <h2>Mentors</h2>
+    <div class="carousel-container">
+      <button class="carousel-button prev">&#10094;</button>
+      <div class="carousel">
+        <!-- Repeat this block for each mentor -->
+        <div class="carousel-card">
+          <img src="download.jpeg" alt="Mentor Name" class="profile-photo">
+          <h3>Mentor Name</h3>
+          <p>Designation</p>
+        </div>
+        <div class="carousel-card">
+            <img src="download.jpeg" alt="Mentor Name" class="profile-photo">
+            <h3>Mentor Name</h3>
+            <p>Designation</p>
+        </div>
+        <div class="carousel-card">
+            <img src="download.jpeg" alt="Mentor Name" class="profile-photo">
+            <h3>Mentor Name</h3>
+            <p>Designation</p>
+        </div>
+        <!-- Add more mentor cards as needed -->
+      </div>
+      <button class="carousel-button next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Students Section -->
+  <section class="students">
+    <h2>Student Team Members</h2>
+    <div class="students-container">
+      <!-- Repeat this block for each student -->
+      <div class="student-card">
+        <img src="student1.jpg" alt="Student Name" class="profile-photo">
+        <h3>Student Name</h3>
+        <p>Branch</p>
+        <a href="https://linkedin.com/in/student1" target="_blank">LinkedIn</a>
+      </div>
+      <!-- Add more student cards as needed -->
+    </div>
+  </section>
+
+  <script>
+const carousel = document.querySelector('.carousel');
+const carouselContainer = document.querySelector('.carousel-container');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+
+let index = 1;
+let interval;
+const slideDuration = 3000;
+
+// Clone the first and last cards for seamless looping
+const firstClone = carousel.children[0].cloneNode(true);
+const lastClone = carousel.children[carousel.children.length - 1].cloneNode(true);
+
+carousel.appendChild(firstClone);  // Add first card to the end
+carousel.insertBefore(lastClone, carousel.children[0]);  // Add last card to the beginning
+
+// Function to set the carousel position
+function updateCarousel() {
+  const cardWidth = carousel.children[1].offsetWidth;  // Use the original first card width
+  carousel.style.transform = `translateX(-${index * (cardWidth + 32)}px)`;
+  carousel.style.transition = 'transform 0.5s ease';
+}
+
+// Function to handle infinite loop
+function handleLoop() {
+  const cardWidth = carousel.children[1].offsetWidth;
+  if (index === 0) {  // If we’re at the last clone, jump to the last real card
+    index = carousel.children.length - 2;
+    carousel.style.transition = 'none';
+    carousel.style.transform = `translateX(-${index * (cardWidth + 32)}px)`;
+  }
+  if (index === carousel.children.length - 1) {  // If we’re at the first clone, jump to the first real card
+    index = 1;
+    carousel.style.transition = 'none';
+    carousel.style.transform = `translateX(-${index * (cardWidth + 32)}px)`;
+  }
+}
+
+// Function to start auto-sliding
+function startAutoSlide() {
+  interval = setInterval(() => {
+    index++;
+    updateCarousel();
+  }, slideDuration);
+}
+
+// Add transitionend listener to handle loop effect
+carousel.addEventListener('transitionend', handleLoop);
+
+// Manual controls for next and previous buttons
+nextButton.addEventListener('click', () => {
+  clearInterval(interval);
+  index++;
+  updateCarousel();
+  startAutoSlide();
+});
+
+prevButton.addEventListener('click', () => {
+  clearInterval(interval);
+  index--;
+  updateCarousel();
+  startAutoSlide();
+});
+
+// Pause auto-slide on hover
+carouselContainer.addEventListener('mouseenter', () => {
+  clearInterval(interval);
+});
+
+carouselContainer.addEventListener('mouseleave', () => {
+  startAutoSlide();
+});
+
+// Initial setup
+updateCarousel();
+startAutoSlide();
+</script>
+</body>
+</html>
