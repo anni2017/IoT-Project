@@ -417,17 +417,27 @@ html, body {
   }
 
 
-  
+  h2{
+    color:white;
+    font-weight: lighter;
+  }
 
   .footer {
-    background-color: var(--main-bg-color);
+    background-color: black;
     color: var(--text-color);
     padding: 10px;
     text-align: center;
 } 
 .footer p{
+  color: white;
     text-align: center;
     margin-top: 2%;
+}
+
+.contact-icons img{
+  height:3rem;
+  width:3rem;
+  margin-left:4px;
 }
   /* Responsive Styles */
   @media (max-width: 768px) {

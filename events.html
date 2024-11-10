@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT CoE Club - Events</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Theme Colors */
+        :root {
+            --main-bg-color: rgb(12, 9, 9); /* Black/Dark gray */
+            --secondary-color: #007bff; /* Blue */
+            --text-color: #d4f1f3;      /* White */
+            --accent-color:#555555;    /* Gray */
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ecf0f5;
+            color: var(--main-bg-color);
+        }
+        .topnav {
+        overflow: hidden;
+        background-color: #ecf0f5;
+        }
+
+        .topnav a {
+        float: right;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .topnav a:hover {
+        background-color: rgb(162, 165, 168);
+        color: #ecf0f5;
+        }
+        .logo{
+            width: 100px;
+            float: left;
+        }
+        .topnav .icon {
+        display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+        .topnav a {display: none;}
+        .topnav a.icon {
+            float: right;
+            display: block;
+        }
+        }
+
+        @media screen and (max-width: 600px) {
+        .topnav.responsive {position: relative;}
+        .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+        }
+        .footer {
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            padding: 10px;
+            text-align: center;
+        } 
+
+        .footer h2{
+          color:white;
+        }
+        .footer p{
+            text-align: center;
+            margin-top: 2%;
+        }
+        .event{
+            text-align: center;
+            background: #555555;
+            color: rgb(101, 170, 244);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 1.5%;
+            padding-top: 2%;
+            padding-bottom: 1%;
+        }
+        .upcoming{
+            margin-top: 30px;
+            margin-left: 8%;
+        }
+        .upcoming h2{
+            color: var(--main-bg-color);
+            font-weight: bold;
+        }
+        .past{
+            margin-top: 30px;
+        }
+        .pasth2{
+            color: var(--main-bg-color);
+            font-weight: bold;
+            padding-left: 8%;
+            padding-top: 5%;
+        }
+        .card {
+        margin-top: 40px;
+        margin-left: 5%;
+        width: 80%;
+        height: 60%;
+        border-radius: 20px;
+        background: rgb(162, 165, 168);
+        position:relative;
+        padding: 1.8rem;
+        border: 2px solid #c3c6ce;
+        transition: 0.5s ease-out;
+        overflow: visible;
+        }
+        .card-body {
+        width: 80%;
+        color: black;
+        }
+        .card-title {
+        text-align: center;
+        color: black;
+        font-size: 1.5em;
+        font-weight: bold;
+        }
+        .card:hover {
+        border-color: #008bf8;
+        border-width: 3px;
+        box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+        }
+        .btn-primary{
+            margin-top: 10px;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        nav ul li {
+            float: inline-end;
+        }
+        #contact {
+        text-align: center;
+        padding: 2%;
+        }
+
+        .contact-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 1em;
+        }
+
+        .contact-icons img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.2s;
+        }
+
+        .contact-icons a:hover img {
+        transform: scale(1.1);
+        }
+
+        .pastevents {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        }
+
+        .pastcard {
+        background-color: rgb(162, 165, 168);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 1rem;
+        }
+
+        .pastevent {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        }
+
+        .event-description {
+        flex: 1;
+        padding: 1rem;
+        }
+
+        .event-description h2 {
+        margin-bottom: 0.5rem;
+        }
+
+        .event-description p {
+        color: rgb(37, 37, 34);
+        text-justify: newspaper;
+        text-align: justify;
+        }
+
+        /* Slider styling */
+        .event-slider {
+        flex: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        width: 100%;
+        max-width: 500px;
+        }
+
+        .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+        }
+
+        .slider img {
+        min-width: 100%;
+        max-width: 100%;
+        border-radius: 8px;
+        }
+
+        .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+        }
+
+        .prev {
+        left: 10px;
+        }
+
+        .next {
+        right: 10px;
+        }
+
+        /* Alternate Layout for every other event */
+        .past-event.alternate {
+        flex-direction: row-reverse;
+        }
+
+        /* Responsive layout for mobile */
+        @media (max-width: 768px) {
+        .pastevent {
+            flex-direction: column;
+        }
+
+        .pastevent.alternate {
+            flex-direction: column;
+        }
+
+        .event-slider, .event-description {
+            max-width: 100%;
+        }
+        }
+        
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <div><img class="logo" src="iot_processed.webp" alt=""></div>
+    <div class="topnav" id="myTopnav">
+        <a href="members.html">Members</a>
+        <a href="">Events</a>
+        <a href="#contact">Contact</a>
+        <a href="">About</a>
+        <a href="idx.html">Home</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+</header>
+
+<!-- Event Section -->
+ <div class="event">
+    <h1>EVENTS</h1>
+ </div>
+
+<!-- Upcoming Events Section -->
+<div class="upcoming">
+    <h2>Upcoming Events</h2>
+    
+    <!-- First Upcoming Event --> 
+    <div class="card">
+      <div class="card-details">
+        <h5 class="card-title">STM32 Workshop</h5>
+        <p class="card-text">Our upcoming workshop is focused on the STM32 microcontroller, a crucial device for gaining hands-on experience in the industry.Get ready for this exciting opportunity and stay tuned for more information.</p>
+        <!-- Register Button to Redirect to Google Form -->
+        <a href="https://docs.google.com/forms/d/e/your-google-form-id/viewform" class="btn btn-primary">Register</a>
+      </div>
+    </div>
+    
+    <!-- Second Upcoming Event -->
+    <div class="card">
+        <div class="card-details">
+            <h5 class="card-title">Kicad Workshop 2.0</h5>
+            <p class="card-text">Printed Circuit Board (PCB) designing and fabrication, using the powerful KiCad software.</p>
+            <!-- Register Button to Redirect to Google Form -->
+            <a href="https://docs.google.com/forms/d/e/another-google-form-id/viewform" class="btn btn-primary">Register</a>
+        </div>
+    </div>
+</div>
+
+<!-- Past Events Section -->
+<div class="past">
+    <h2 class="pasth2">Past Events</h2>
+    <section class="pastevents">
+        <!--past event 1 (Formation of committee)-->
+        <div class="pastcard">
+          <div class="pastevent">
+            <div class="event-description">
+              <h2>Formation of committee:</h2>
+              <p>IoT CoE was established on August 26, 2023. Students from various branches were selected to ensure diversity. To achieve this, a pre-test was organized, and the chosen students underwent two interviews assessing their knowledge of electronics and coding. The selected students became part of the IoT CoE teams based on their skills and expertise.</p>
+            </div>
+            <div class="event-slider">
+              <div class="slider">
+                <img src="formation\1-prerana-igniting-professional-minds.webp" alt="Event 1 Image 1">
+                <img src="formation\2-prerana-igniting-professional-minds.webp" alt="Event 1 Image 2">
+                <img src="formation\3-prerana-igniting-professional-minds.webp" alt="Event 1 Image 3">
+                <img src="formation\4-prerana-igniting-professional-minds.webp" alt="Event 1 Image 4">
+              </div>
+              <button class="prev">&#10094;</button>
+              <button class="next">&#10095;</button>
+            </div>
+          </div>
+        </div>
+    
+        <!--past event 2 (First Workshop on IoT)-->
+        <div class="pastcard">
+          <div class="pastevent alternate">
+            <div class="event-slider">
+              <div class="slider">
+                <img src="Internet of Things using esp\1711159859731.jpg" alt="Event 2 Image 1">
+                <img src="Internet of Things using esp\1711159859801.jpg" alt="Event 2 Image 2">
+                <img src="Internet of Things using esp\1711159859660.jpg" alt="Event 2 Image 3">
+                <img src="Internet of Things using esp\1711159859631.jpg" alt="Event 2 Image 4">
+                <img src="Internet of Things using esp\1711159823385.jpg" alt="Event 2 Image 5">
+                <img src="Internet of Things using esp\1711159823206.jpg" alt="Event 2 Image 6">
+                <img src="Internet of Things using esp\1711159823220.jpg" alt="Event 2 Image 7">
+                <img src="Internet of Things using esp\1711159823324.jpg" alt="Event 2 Image 8">
+              </div>
+              <button class="prev">&#10094;</button>
+              <button class="next">&#10095;</button>
+            </div>
+            <div class="event-description">
+              <h2>First Workshop on IoT: </h2>
+              <p>Our very first workshop on IoT took place during our semester break. In this training, our mentors introduced us to the ESP32 microcontroller and taught us how to upload and retrieve data from the cloud, such as ThingSpeak.During this training, attendees gained an understanding of how technology can simplify their lives. We worked on various projects, including home automation and uploading temperature sensor data to the cloud. Additionally, we used IFTTT, a platform that provides various services, such as receiving notifications through messages or calls when certain conditions are met. We discovered that you can also integrate Alexa for projects like home automation and much more.</p>
+            </div>
+          </div>
+        </div>
+
+        <!--past event 3 (Mansaur University workshop)-->
+        <div class="pastcard">
+            <div class="pastevent">
+              <div class="event-description">
+                <h2>Mansaur University workshop:</h2>
+                <p>This workshop was organized at Mansaur University on the topic of IoT. We provided both theoretical and practical knowledge to students majoring in Electrical and Computer Science. In a 7-day training program, students gained knowledge of various communication protocols, learned about microcontrollers (ESP8266), and acquired the skills to set up hardware and software connectivity, as well as use cloud platforms, among other topics.
+                    During the training, students uploaded data from different sensors and also completed projects, such as voice-controlled and manual home automation. For cloud-based applications, we utilized the ThingSpeak platform, which offers various features such as ThingHTTP, React, and time-based control. Students learned how to upload data to the cloud and access it</p>
+              </div>
+              <div class="event-slider">
+                <div class="slider">
+                  <img src="Mansaur university workshop\IMG20230916130326.jpg" alt="Event 3 Image 1">
+                  <img src="Mansaur university workshop\IMG_20231007_141602.jpg" alt="Event 3 Image 2">
+                  <img src="Mansaur university workshop\IMG_20230912_101407.jpg" alt="Event 3 Image 3">
+                  <img src="Mansaur university workshop\IMG_20231007_141745.jpg" alt="Event 3 Image 4">
+                  <img src="Mansaur university workshop\IMG_20230912_094550.jpg" alt="Event 3 Image 5">
+                </div>
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+              </div>
+            </div>
+          </div>
+
+          <!--past event 4 (Kicad workshop)-->
+        <div class="pastcard">
+            <div class="pastevent alternate">
+              <div class="event-slider">
+                <div class="slider">
+                  <img src="Kicad Workshop\IMG_20230927_070852.jpg" alt="Event 4 Image 1">
+                  <img src="Kicad Workshop\000.jpg" alt="Event 4 Image 2">
+                  <img src="Kicad Workshop\IMG-20230921-WA0043.jpg" alt="Event 4 Image 3">
+                  <img src="Kicad Workshop\IMG-20230921-WA0042.jpg" alt="Event 4 Image 4">
+                  <img src="Kicad Workshop\IMG-20230921-WA0041.jpg" alt="Event 4 Image 5">
+                  <img src="Kicad Workshop\IMG-20230913-WA0024.jpg" alt="Event 4 Image 6">
+                  <img src="Kicad Workshop\IMG-20230921-WA0040.jpg" alt="Event 4 Image 7">
+                </div>
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+              </div>
+              <div class="event-description">
+                <h2>Kicad workshop:</h2>
+                <p>This was a three-day workshop organized by the loT Center of Excellence (CoE) in collaboration with the Department of Electronics and Communication. From September 20 to September 22, 2023, our participants dived into the fascinating realm of Printed Circuit Board (PCB) designing and fabrication, using the powerful KiCad software.
+                    *On day 1*: We started with the basics of PCB technology, explored electronic components, and mastered the installation of KiCad software.
+                    
+                    *On day 2*: It was all about getting hands-on, as we delved into bread boarding, circuit design, and the art of creating PCB layouts in KiCad.
+                    
+                    *On day 3 - The Final Day*: The climax saw us rolling up our sleeves for practical PCB fabrication, covering circuit printing, etching, drilling, and component soldering.
+                    </p>
+              </div>
+            </div>
+          </div>
+
+          <!--past event 5 (Arduinocraft Workshop)-->
+        <div class="pastcard">
+            <div class="pastevent">
+              <div class="event-description">
+                <h2>Arduinocraft Workshop – Turn Your Concept Into An Electronic Object:</h2>
+                <p>This recent workshop called ArduinoCraft stoked an interest in electronics and creativity. Plunging into the fascinating world of Arduino, attendees learned everything from board fundamentals to coding, practical projects, and sensor integration. This session encouraged teamwork, brought like-minded people together, and gave them insightful information.
+                    In addition to receiving certificates, participant’s learning is guaranteed to continue after the workshop thanks to a wealth of resources. For those who are new to Arduino as well as experienced fans, ArduinoCraft is the ideal environment for exploration, experimentation, and creation. Keep an eye out for upcoming releases and the chance to start your own Arduino journey, where your imaginative concepts become reality.
+                    </p>
+              </div>
+              <div class="event-slider">
+                <div class="slider">
+                  <img src="Arduinocraft\WhatsApp Image 2023-11-05 at 10.12.30 PM.jpeg" alt="Event 5 Image 1">
+                  <img src="Arduinocraft\WhatsApp Image 2023-11-05 at 10.12.31 PM.jpeg" alt="Event 5 Image 2">
+                  <img src="Arduinocraft\WhatsApp Image 2023-11-05 at 10.12.29 PM.jpeg" alt="Event 5 Image 3">
+                  <img src="Arduinocraft\WhatsApp Image 2023-11-05 at 10.04.47 PM.jpeg" alt="Event 5 Image 4">
+                  <img src="Arduinocraft\WhatsApp Image 2023-11-05 at 10.04.46 PM.jpeg" alt="Event 5 Image 5">
+                </div>
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+              </div>
+            </div>
+          </div>
+      </section>
+</div>
+
+<!-- Footer Section -->
+<div class="footer">
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-icons">
+          <a href="https://www.instagram.com/your_instagram_profile" aria-label="Instagram">
+            <img src="instagram-logo.png" alt="Instagram">
+          </a>
+          <a href="mailto:IoTcoe@sistec.ac.in" aria-label="Email">
+            <img src="mail.png" alt="Email">
+          </a>
+          <a href="https://www.linkedin.com/in/your_linkedin_profile" aria-label="LinkedIn">
+            <img src="linkedin.png" alt="LinkedIn">
+          </a>
+        </div>
+      </section>
+    <p>&copy; 2023 IoT CoE Club</p>
+</div>
+</body>
+<script>
+    function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+    document.querySelectorAll('.pastevent').forEach((pastevent) => {
+  const slider = pastevent.querySelector('.slider');
+  const images = slider.querySelectorAll('img');
+  const prevButton = pastevent.querySelector('.prev');
+  const nextButton = pastevent.querySelector('.next');
+
+  let index = 0;
+
+  function showImage() {
+    const width = images[0].clientWidth;
+    slider.style.transform = `translateX(-${index * width}px)`;
+  }
+
+  nextButton.addEventListener('click', () => {
+    index = (index + 1) % images.length;
+    showImage();
+  });
+
+  prevButton.addEventListener('click', () => {
+    index = (index - 1 + images.length) % images.length;
+    showImage();
+  });
+
+  // Adjust the slide on window resize to maintain position
+  window.addEventListener('resize', showImage);
+});
+
+</script>
+</html>
