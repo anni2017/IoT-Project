@@ -226,6 +226,10 @@ html, body {
       .menu-icon.hide {
         display: none;
       }
+
+      li{
+        margin-top:5px;
+      }
   }
 
 
@@ -419,6 +423,10 @@ html, body {
     .card{
       width:100%;
     }
+
+    .card img{
+      width:100%
+    }
   }
 
 
@@ -490,3 +498,5 @@ html, body {
       width: 2.5rem;
     }
   }
+
+  
